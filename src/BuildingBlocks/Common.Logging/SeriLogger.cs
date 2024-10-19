@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Sinks.Elasticsearch;
@@ -13,7 +13,7 @@ public static class SeriLogger
 			var elasticUri = context.Configuration.GetValue<string>("ElasticConfiguration:Uri");
 
 			var indexFormat =
-				$"applogs-{context.HostingEnvironment.ApplicationName?.ToLower().Replace(".", "-")}-{context.HostingEnvironment.EnvironmentName?.ToLower().Replace(".", "-")}-logs-{DateTime.UtcNow:yyyy-MM-dd-hh-mm-ss}";
+				$"applogs-{context.HostingEnvironment.ApplicationName?.ToLower().Replace(".", "-")}-{context.HostingEnvironment.EnvironmentName?.ToLower().Replace(".", "-")}-logs-{DateTime.UtcNow:yyyy-MM}";
 
 			var elasticSearchOptions = new ElasticsearchSinkOptions(new Uri(elasticUri))
 			{
